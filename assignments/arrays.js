@@ -63,19 +63,19 @@ let inventory = [{"id":1,"car_make":"Lincoln","car_model":"Navigator","car_year"
 
 // ==== Challenge 1 ====
 // The dealer can't recall the information for a car with an id of 33 on his lot. Help the dealer find out which car has an id of 33 by logging the car's year, make, and model in the console log provided to you below:
-console.log(`Car 33 is a ${inventory[33]["car_year"]} ${inventory[33]["car_make"]} ${inventory[33]["car_model"]}`);
+console.log(`Car 33 is a ${inventory[32].car_year} ${inventory[32].car_make} ${inventory[32].car_model}`);
 
 // ==== Challenge 2 ====
 // The dealer needs the information on the last car in their inventory.  What is the make and model of the last car in the inventory?  Log the make and model into the console.
-let lastCar = inventory.length;
-console.log(`Car ${lastCar} is a ${inventory[lastCar-1]["car_make"]} ${inventory[lastCar-1]["car_model"]}`);
+let lastCar = inventory.length-1;
+console.log(`Car ${lastCar+1} is a ${inventory[lastCar].car_make} ${inventory[lastCar].car_model}`);
 
 // ==== Challenge 3 ====
 // The marketing team wants the car models listed alphabetically on the website. Sort all the car model names into alphabetical order and log the results in the console
-const carModels = [];
+let carModels = [];
 
 for (let i=0; i < inventory.length; i++) {
-    carModels.push(inventory[i]["car_model"]);
+    carModels.push(inventory[i].car_model);
 }
 
 carModels = carModels.sort();
@@ -86,7 +86,7 @@ console.log(carModels);
 // The accounting team needs all the years from every car on the lot. Create a new array from the dealer data containing only the car years and log the result in the console.
 let carYears = [];
 for (let i=0; i < inventory.length; i++) {
-    carYears.push(inventory[i]["car_year"]);
+    carYears.push(inventory[i].car_year);
 }
 
 carYears = carYears.sort();
@@ -109,16 +109,16 @@ console.log(oldCars.reverse());
 let Audi = [];
 let BMW = [];
 for (let i=0; i < inventory.length; i++){
-    let make = inventory[i]['car_make'];
-     if (make == 'Audi') {Audi.push(inventory[i])}
-     if (make == 'BMW') {BMW.push(inventory[i])}
+    let make = inventory[i].car_make;
+     if (make === 'Audi') {Audi.push(inventory[i])}
+     if (make === 'BMW') {BMW.push(inventory[i])}
 }
 
 BMW = BMW.sort(function (a,b){
-    return b['car_year'] - a['car_year'];
+    return b.car_year - a.car_year;
   });
 Audi = Audi.sort(function (a,b){
-    return b['car_year'] - a['car_year'];
+    return b.car_year - a.car_year;
   });
 
 let BMWandAudi = Audi.concat(BMW);
